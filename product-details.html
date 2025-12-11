@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details - ATOZ Malimali & Electronics</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+}
+header {
+  background: #c1e9f3;
+  color: rgb(74, 77, 243);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+header a {
+  color: rgb(7, 7, 7);
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+header a:hover {
+  color: #ffa366;
+}
+.container {
+  max-width: 1100px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+}
+.left-images {
+  flex: 1 1 40%;
+}
+.big-image {
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.thumbs {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.thumbs img {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  object-fit: contain;
+}
+.thumbs img:hover,
+.thumbs img.active {
+  border: 2px solid #002c5f;
+}
+.details {
+  flex: 1 1 55%;
+}
+.details h2 {
+  margin: 0;
+  font-size: 26px;
+}
+.price {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #002c5f;
+}
+.stars {
+  color: gold;
+  font-size: 22px;
+  margin: 5px 0 10px;
+}
+.details p {
+  line-height: 1.5;
+  color: #333;
+}
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+.add-cart {
+  background: #002c5f;
+  color: white;
+}
+.whatsapp {
+  background: #25D366;
+  color: white;
+}
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  text-align: center;
+  background: #002c5f;
+  color: white;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .left-images,
+  .details {
+    width: 100%;
+  }
+}
+/* Default: 3 columns even on small phones */
+.product-grid {
+  display: grid;
+  gap: 15px;
+  padding: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Tablets ≥ 768px → 3 columns (optional, already covered) */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktops ≥ 1024px → 4 columns */
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h2><i class="fa-solid fa-shop"></i> ATOZ Malimali & Electronics</h2>
+  <nav>
+    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="electronics.html"><i class="fa-solid fa-plug-circle-bolt"></i> Electronics</a>
+    <a href="kitchen.html"><i class="fa-solid fa-kitchen-set"></i> Home & Kitchen</a>
+    <a href="contact.html"><i class="fa-solid fa-phone"></i> Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="left-images">
+    <img id="bigImage" class="big-image" src="" alt="Product">
+    <div class="thumbs" id="thumbContainer"></div>
+  </div>
+
+  <div class="details">
+    <h2 id="productName"></h2>
+    <div class="stars">⭐⭐⭐⭐☆ (20 reviews)</div>
+    <div class="price" id="productPrice"></div>
+    <p id="productDesc"></p>
+    <button class="btn add-cart" onclick="addToCart()">Add to Cart</button>
+    <button class="btn whatsapp" onclick="orderWhatsApp()">Order on WhatsApp</button>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 ATOZ Malimali & Electronics. All Rights Reserved.
+</footer>
+
+<script>
+// Get URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get("name") || "Product Name";
+const price = urlParams.get("price") || "KES 0";
+const desc = urlParams.get("desc") || "High-quality product imported with warranty. Suitable for everyday use.";
+const placeholder = "https://via.placeholder.com/350";
+const img1 = urlParams.get("img") || placeholder;
+const img2 = urlParams.get("img2") || img1;
+const img3 = urlParams.get("img3") || img2;
+
+// Update page content
+document.getElementById("productName").innerText = name;
+document.getElementById("productPrice").innerText = price;
+document.getElementById("productDesc").innerText = desc;
+document.getElementById("bigImage").src = img1;
+
+// Create thumbnails
+const thumbContainer = document.getElementById("thumbContainer");
+const images = [img1, img2, img3];
+images.forEach((src, index) => {
+  const img = document.createElement("img");
+  img.src = src;
+  if (index === 0) img.classList.add("active");
+  img.onclick = () => {
+    document.getElementById("bigImage").src = src;
+    document.querySelectorAll(".thumbs img").forEach(i => i.classList.remove("active"));
+    img.classList.add("active");
+  };
+  thumbContainer.appendChild(img);
+});
+
+// Add to Cart
+function addToCart() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({ name, price, img: img1 });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("✅ Item added to your cart!");
+}
+
+// WhatsApp Order
+function orderWhatsApp() {
+  const phone = "254799547792";
+  const message = `Hello! I want to order:%0A• ${name} - ${price}`;
+  const cleanPhone = phone.replace(/\D/g, '');
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const url = isMobile
+    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`
+    : `https://web.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+// Zoom functionality
+const zoomModal = document.getElementById("zoomModal");
+const zoomImg = document.getElementById("zoomImg");
+
+bigImage.onclick = () => {
+  zoomImg.src = bigImage.src;
+  zoomModal.style.display = "flex";
+}
+
+function closeZoom(){
+  zoomModal.style.display = "none";}
+</script>
+
+<!-- Font Awesome for icons (optional but matches your homepage) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- OR use this simpler CDN (free version) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

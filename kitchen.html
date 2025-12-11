@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home & Kitchen - ATOZ Malimali & Electronics</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#feffff;}
+header{background:#c1e9f3;color:rgb(71, 96, 238);padding:10px 15px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+header h2{display:flex;align-items:center;gap:8px;font-size:1.2em;}
+nav{display:flex;gap:15px;align-items:center;}
+nav a{color:rgb(7, 7, 7);text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:6px;font-size:15px;}
+nav a:hover{color:#e75ff3;}
+.search-box{padding:6px 10px;border-radius:5px;border:none;min-width:200px;}
+.menu-toggle{display:none;font-size:1.5em;cursor:pointer;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px;}
+.product-card{background:white;border-radius:10px;padding:15px;box-shadow:0px 3px 10px rgba(0,0,0,0.1);transition:0.3s;cursor:pointer;}
+.product-card:hover{transform:scale(1.05);}
+.product-card img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px;}
+.whatsapp-btn-card{background:#25D366;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;font-weight:bold;width:100%;transition:0.3s;}
+.whatsapp-btn-card:hover{background:#128C7E;transform:scale(1.05);}
+.social-handles{position:fixed;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:15px;z-index:1000;}
+.social-handles .social-icon{background:#07ecec;color:white;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;text-decoration:none;transition:0.3s;}
+.social-handles .social-icon:hover{background:#e57ce9;transform:scale(1.2);}
+footer{background:#323837;color:rgb(15, 15, 15);padding:30px 20px;text-align:center;}
+footer a{color:rgb(1, 188, 245);text-decoration:none;margin:0 10px;}
+footer a:hover{color:#f89b0f;}
+#noResultsMsg {
+  text-align: center;
+  padding: 30px;
+  color: #002c5f;
+  display: none;
+}
+@media(max-width:768px){
+  nav.right-links{display:none;flex-direction:column;background:#002c5f;position:absolute;top:50px;right:0;width:200px;padding:10px;border-radius:5px;}
+  nav.right-links.active{display:flex;}
+  .menu-toggle{display:block;color:white;}
+}
+/* Default: 3 columns even on small phones */
+.product-grid {
+  display: grid;
+  gap: 15px;
+  padding: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Tablets ≥ 768px → 3 columns (optional, already covered) */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktops ≥ 1024px → 4 columns */
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="left-menu">
+    <h2><i class="fa-solid fa-shop"></i>ATOZ Malimali & Electronics</h2>
+    <nav class="left-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="electronics.html"><i class="fa-solid fa-plug-circle-bolt"></i> Electronics</a>
+      <a href="kitchen.html"><i class="fa-solid fa-kitchen-set"></i> Home & Kitchen</a>
+    </nav>
+  </div>
+  <div class="right-menu">
+    <nav class="right-links" id="rightLinks">
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a>
+      <a href="contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a>
+    </nav>
+    <input type="text" id="searchBox" class="search-box" placeholder="Search products...">
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+  </div>
+</header>
+
+<h1 style="text-align:center;margin-top:20px;">Home & Kitchen Products</h1>
+<div class="product-grid" id="productGrid"></div>
+
+<div id="noResultsMsg">
+  <h3>Product not found</h3>
+  <p>We don’t carry that item yet — but we’d love to know what you’re looking for!</p>
+  <a href="contact.html" style="color:#25D366; font-weight:bold;">Contact us via WhatsApp</a>
+</div>
+
+<!-- Floating Social Handles -->
+<div class="social-handles">
+  <a href="https://www.facebook.com/share/17tTnvr3Tz/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/malimalishop2024/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@atozmalimali" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+</div>
+
+<footer>
+  <p>&copy; 2025 ATOZ Malimali & Electronics. All Rights Reserved.</p>
+  <p>
+    <a href="https://www.facebook.com/share/17tTnvr3Tz/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/malimalishop2024/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@atozmalimali" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+  </p>
+</footer>
+
+<script>
+// Mobile menu toggle
+function toggleMenu(){
+  document.getElementById("rightLinks").classList.toggle("active");
+}
+
+// ✅ FIXED WhatsApp function (no extra spaces)
+function orderWhatsApp(product, price) {
+  const phone = "254799547792";
+  const message = `Hello! I want to order:%0A• ${product} - KES ${price}`;
+  const cleanPhone = phone.replace(/\D/g, '');
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const url = isMobile
+    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`
+    : `https://web.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+// ✅ 28 Kitchen Products (15 original + 13 new)
+const kitchenProducts = [
+  // Original 15
+  {name:"4-Piece Non-Stick Pot Set with Glass Lids (24cm, 26cm, 28cm, 30cm)",price:5500,img:"image/uten13.jpg",desc:"A complete cookware set featuring four non-stick pots in graduated sizes (24cm to 30cm), each with a tempered glass lid and sturdy handles"},
+  {name:" Luxury Gold Ceramic Casserole Serving Set ",price:4900,img:"image/uten14.jpg",desc:"Premium freestanding water dispenser with built-in ice maker. Perfect for homes and offices."},
+  {name:"Happy Home 6-Piece Heavy Gauge Stainless Steel Hot Pot Set",price:5000,img:"image/utensils2.jpg",desc:"Stylish insulated hot pots with textured leatherette finish and gold handles. Keeps food warm for hours — perfect for serving at buffets or family meals. Available in beige, white, and grey."},
+  {name:" set of Happy Home Stainless Steel Hot Pots.",price:6000,img:"image/utensils1.jpg",desc:"High-quality stainless steel kitchen utensil set with ergonomic handles. Includes spatula, ladle, tongs, and more."},
+  {name:" Ceramic Mugs",price:900,img:"image/utensils3.jpg",desc:"Elegant black ribbed ceramic mugs with gold handles"},
+  {name:" 4-Piece Floral Ceramic Food Storage Set with Lids",price:2800,img:"image/utensils4.jpg",desc:"ACharming beige ceramic storage bowls featuring elegant blue and gold floral designs"},
+  {name:" Gold Greek Key Glass Water Set (Pitcher + 12 Glasses)",price:1800,img:"image/utensils5.jpg",desc:"Elegant glass water set featuring a large pitcher and 12 matching tumblers"},
+  {name:"Non-stick cookware set",price:6000,img:"image copy/rednonstick.jpg",desc:"1non-stick loaf pan perfect for baking bread"},
+  {name:"Donnor Heavy Elegant Granite Cooking Pot Set",price:12000,img:"image copy/utensils9.jpg",desc:"Complete 11-piece kitchen set featuring elegant black speckled pots and pans with gold-trimmed edges."},
+  {name:" Fable Vulcon Insulated Casserole sets",price:6500,img:"image copy/vulcon.jpg",desc:"Elegant insulated casserole set featuring a stylish grey body with intricate gold geometric patterns"},
+  {name:" Dinner set",price:3500,img:"image copy/utensils12.jpg",desc:"Elegant white ceramic dinner set featuring textured plates"},
+  {name:"Great Star 14-piece Aluminum Cookware Set",price:7500,img:"image copy/utensils11.jpg",desc:"Complete 14-piece aluminum cookware set with non-stick coating and tempered glass lids"},
+  {name:" set of ceramic coffee mugs with a gold finish ",price:1000,img:"image copy/utensils10.jpg",desc:"Elegant ceramic mugs with a stylish"},
+  {name:" Jamespot 10-piece high-class stainless steel cookware set. ",price:4500,img:"image copy/utensils8.jpg",desc:"Premium 10-piece stainless steel cookware set with polished finish and durable construction."},
+  {name:" Stainless Steel Pot Set (30cm, 32cm, 34cm, 36cm, 38cm)",price:8000,img:"image copy/utensils7.jpg",desc:" heavy-duty stainless steel pot set with glass lids and sturdy handles"},
+
+  // 🔥 13 NEW PRODUCTS (16–28)
+  {name:"3.2L Plastic Thermal Flask (3 Colors: Blue, Mint, Pink)",price:900,img:"image copy/thermoss.jpg",img2:"image/airfryer2.jpg",img3:"image/airfryer3.jpg",desc:"Large 3.2-liter thermal flask with a sturdy handle and floral design"},
+  {name:"King Daley 350ml Tall Glass (Set of 6)r",price:800,img:"image copy/tall glass.jpg",img2:"image/juicer2.jpg",img3:"image/juicer3.jpg",desc:"slender 350ml tall glasses perfect for serving juices"},
+  {name:"A set of six classic water and juice glasses",price:600,img:"image copy/tall glass main.jpg",img2:"image/knives2.jpg",img3:"image/knives3.jpg",desc:"classic water and juice glasses with a timeless design"},
+  {name:"11-Piece Red Silicone Cooking Utensil Set with Wooden Handles",price:1750,img:"image copy/siliconspoons.jpg",img2:"image/otg2.jpg",img3:"image/otg3.jpg",desc:"vibrant red silicone cooking utensils with comfortable wooden handles — includes spatula, ladle, tongs, and more. Heat-resistant and easy to clean."},
+  {name:"Stainless Steel Pot Set (Multi-Size)",price:5500,img:"image copy/stainless sufurias.jpg",img2:"image/washer2.jpg",img3:"image/washer3.jpg",desc:"durable stainless steel pots with glass lids and sturdy handles — ideal for boiling, stewing, or steaming. Available in multiple sizes to suit all your cooking needs."},
+  {name:"3-Tier Rotating Kitchen Storage Basket (Black)",price:1900,img:"image copy/ssloonstand.jpg",img2:"image/mixer2.jpg",img3:"image/mixer3.jpg",desc:"Space-saving 3-tier rotating organizer with black perforated baskets — perfect for storing snacks, fruits, vegetables, or pantry items. Spins 360° for easy access and keeps your kitchen tidy."},
+  {name:"White Ceramic Dinner Set with Black Pattern (Plates, Mugs & Thermal Jug)",price:3500,img:"image copy/set utensils.jpg",img2:"image/bin2.jpg",img3:"image/bin3.jpg",desc:"Elegant white ceramic set featuring textured plates with a stylish black geometric pattern, matching mugs on a chrome stand, and a sleek frosted thermal jug. Perfect for daily use or hosting — modern, coordinated, and functional."},
+  {name:"Gold-Rimmed Ceramic Casserole Set ",price:2900,img:"image copy/serving dishes.jpg",img2:"image/grill2.jpg",img3:"image/grill3.jpg",desc:"Stylish 3-piece aluminum cookware set with a black speckled finish and stainless-steel rims. Features durable non-stick coating, glass lids, and ergonomic handles — perfect for everyday cooking."},
+  {name:"Black Speckled Aluminum Cookware Set",price:5500,img:"image copy/realme non stick.jpg",img2:"image/purifier2.jpg",img3:"image/purifier3.jpg",desc:"RO+UV neral booster. Ensures safe and clean drinking water."},
+  {name:"Single Gas Burner",price:400,img:"image copy/burner.jpg",img2:"image/wok2.jpg",img3:"image/wok3.jpg",desc:"Compact single gas burner with sturdy metal construction and easy-to-use controls. Perfect for small kitchens, outdoor cooking, or as an additional burner for busy cooking days."},
+  {name:"Elita Gas burner",price:600,img:"image copy/barnna.jpg",img2:"image/kscale2.jpg",img3:"image/kscale3.jpg",desc:""},
+  {name:"Stainless Steel grill",price:300,img:"image copy/grill.jpg",img2:"image/egg2.jpg",img3:"image/egg3.jpg",desc:"Durable stainless steel replacement handle for pots and pans — features a secure clip-on design with heat-resistant grip. Perfect for repairing or upgrading your cookware."},
+  {name:"Mirrordress",price:3200,img:"image copy/mirrordress.jpg",img2:"image/egg2.jpg",img3:"image/egg3.jpg",desc:"Sleek, modern full-length mirror with slim black metal frame — perfect for bedrooms or dressing areas. Sturdy A-frame base for stability."},
+  {name:"Kitchen Wall Mirror",price:3500,img:"image copy/mirrorkitchen.jpg",desc:"Small decorative mirror for kitchens — adds depth and light to small spaces. Ideal for above sinks or counters."},
+  {name:"Nunix DR-85S Dish Rack (85cm)",price:4500,img:"image copy/steelstand3.jpg",desc:"Sleek black wall-mounted dish rack with 2-tier design, integrated cutlery holder, and drainage tray. Perfect for small kitchens — saves counter space and keeps dishes organized."},
+  {name:"Nunix DR-85D 3-Tier Wall-Mounted Dish Rack",price:3500,img:"image copy/steelstand1.jpg",desc:"Spacious 3-tier dish drying rack with extra storage basket and cutlery holder. Ideal for large families or busy kitchens — mounts securely to walls for maximum efficiency."},
+  {name:"3-Tier Rotating Kitchen Storage Cart with Wheels",price:1900,img:"image copy/ssloonstand.jpg",desc:"Space-saving 3-tier rolling cart with black perforated baskets — perfect for storing fruits, snacks, or pantry items. Features wheels for easy mobility and 360° rotation for convenient access."},
+  {name:"Nunix DR-503 dish rack",price:3500,img:"image copy/dishstandtatu.jpg",desc:""},
+  {name:"Blue 2-Tier Countertop Dish Drainerr",price:1400,img:"image copy/standplastic.jpg",desc:"Compact blue dish drying rack with 2 tiers and integrated cutlery holder. Ideal for small kitchens — holds plates, bowls, and cups while draining water."},
+  {name:"White Ceramic Casserole Set with Gold Handles",price:5500,img:"image copy/pot hot.jpg",desc:"Elegant white ceramic casserole set with ribbed design and gold handles. Perfect for baking, serving, or storing — oven-safe and microwave-friendly. "},
+  {name:"Bar Chair (Modern Design)",price:1350,img:"image copy/chair.jpg",desc:"Stylish kitchen stool with metal legs and cushioned seat — perfect for breakfast bars or counter seating"},
+  {name:"Manual Citrus Fruit Press",price:900,img:"image copy/fruitpress.jpg",desc:"Hand-crank fruit press for oranges, lemons, and limes — extract fresh juice without electricity."},
+  {name:"HotPlate",price:1500,img:"image copy/hotplate.jpg",desc:"Compact electric hot plate for cooking or heating — ideal for small kitchens, offices, or camping."},
+  {name:"Nunix MF-82 6L Electric Deep Fryer",price:7500,img:"image copy/fryermaan.jpg",desc:"Professional-grade 6L electric deep fryer with dual baskets for simultaneous frying. Features adjustable thermostat and oil drain valve. Perfect for home or small business use — fries, chips, chicken, and more with ease."},
+  {name:"Electric Deep Fryer (6L)",price:4500,img:"image copy/fryermain.jpg",desc:"Professional-grade 6L electric deep fryer with single stainless steel baskets for simultaneous frying. Features adjustable temperature control, oil drain valve, and 1-year warranty — perfect for home or small business use."},
+  {name:"OIL dropper",price:750,img:"image copy/oildropper.jpg",desc:""},
+  {name:"Mug flask",price:1000,img:"image copy/mug flask.jpg",desc:""},
+  {name:"Steel Flask Mug",price:1000,img:"image copy/fllaskmug2.jpg",desc:""},
+  {name:"Oven",price:20000,img:"image copy/OVENmain.jpg",desc:""},
+  {name:"Oven",price:20500,img:"image copy/Ovennmain.jpg",desc:""},
+  {name:"Mika Oven",price:2100,img:"image copy/oven2main.jpg",desc:""},
+  {name:" Mika free-standing cooker ",price:26000,img:"image copy/mikaovenmain.jpg",desc:" "},
+  {name:"Pressure cooker&Rice cooker",price:5500,img:"image copy/electricport1.jpg",desc:"C"},
+  {name:"Non-stck Pan",price:1000,img:"image copy/pan.jpg",desc:" "},
+  {name:"Pressure cooker&Rice cooker",price:6000,img:"image copy/electricport2.jpg",desc:"It offers multiple pre-programmed settings for various cooking methods, including high-pressure cooking, browning, simmering, and sautéing"},
+  {name:" Hoffmans air fryer. ",price:4500,img:"image copy/electricport4.jpg",desc:"It uses fast-circulating superheated air technology to cook food with little to no oil, offering a healthier cooking method. "},
+  {name:"Mika gas cooker",price:2500,img:"image copy/cooker.jpg",desc:""},
+  {name:"Ipcone gas cooker(glass)",price:2900,img:"image copy/cooker1.jpg",desc:""},
+  {name:"Jiko Okoa small",price:3500,img:"image copy/jikokoa.jpg",desc:" "},
+  {name:"Jiko Okoa medium ",price:4000,img:"image copy/jikokoa.jpg",desc:" "},
+  {name:"Jiko Okoa big",price:5000,img:"image copy/jikokoa.jpg",desc:" "},
+  {name:"Electric kettle",price:1700,img:"image copy/ketalfront.png",desc:""},
+];
+
+// Generate product cards
+const productGrid = document.getElementById("productGrid");
+kitchenProducts.forEach(product => {
+  const card = document.createElement("div");
+  card.classList.add("product-card");
+  card.setAttribute("data-name", product.name.toLowerCase());
+  card.setAttribute("data-desc", product.desc.toLowerCase());
+
+  const safeName = product.name.replace(/'/g, "\\'");
+  card.innerHTML = `
+    <img src="${product.img}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>KES ${product.price.toLocaleString()}</p>
+    <button class="whatsapp-btn-card" onclick="orderWhatsApp('${safeName}', ${product.price})">Order via WhatsApp</button>
+  `;
+
+  card.addEventListener("click", (e) => {
+    if (e.target.tagName.toLowerCase() === "button") return;
+    const params = new URLSearchParams({
+      name: product.name,
+      price: `KES ${product.price}`,
+      img: product.img,
+      img2: product.img2 || product.img,
+      img3: product.img3 || product.img,
+      desc: product.desc
+    }).toString();
+    window.location.href = `product-details.html?${params}`;
+  });
+
+  productGrid.appendChild(card);
+});
+
+// ✅ LIVE SEARCH
+document.getElementById("searchBox").addEventListener("input", function(e) {
+  const term = e.target.value.toLowerCase().trim();
+  const cards = document.querySelectorAll(".product-card");
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const name = card.getAttribute("data-name") || "";
+    const desc = card.getAttribute("data-desc") || "";
+    if (term && (name.includes(term) || desc.includes(term))) {
+      card.style.display = "block";
+      visibleCount++;
+    } else {
+      card.style.display = term ? "none" : "block";
+    }
+  });
+
+  const noResults = document.getElementById("noResultsMsg");
+  if (term && visibleCount === 0) {
+    noResults.style.display = "block";
+  } else {
+    noResults.style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>

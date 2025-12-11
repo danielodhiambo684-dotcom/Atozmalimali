@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - ATOZ Malimali & Electronics</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#feffff;}
+header{background:#c1e9f3;color:rgb(74,77,243);padding:10px 15px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+header h2{display:flex;align-items:center;gap:8px;font-size:1.2em;}
+nav.left-links a, nav.right-links a{color:rgb(7,7,7);text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:6px;font-size:15px;}
+nav.left-links a:hover, nav.right-links a:hover{color:#ffa366;}
+.search-box{padding:6px 10px;border-radius:5px;border:none;min-width:200px;}
+.menu-toggle{display:none;font-size:1.5em;cursor:pointer;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px;}
+.product-card{background:white;border-radius:10px;padding:15px;box-shadow:0px 3px 10px rgba(0,0,0,0.1);transition:0.3s;cursor:pointer;}
+.product-card:hover{transform:scale(1.05);}
+.product-card img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px;}
+.whatsapp-btn-card{background:#25D366;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;font-weight:bold;width:100%;transition:0.3s;}
+.whatsapp-btn-card:hover{background:#128C7E;transform:scale(1.05);}
+.social-handles{position:fixed;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:15px;z-index:1000;}
+.social-handles .social-icon{background:#101113;color:white;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;text-decoration:none;transition:0.3s;}
+.social-handles .social-icon:hover{background:#faba44;transform:scale(1.2);}
+footer{background:#252727;color:rgb(19, 18, 18);padding:30px 20px;text-align:center;}
+footer a{color:rgb(68, 191, 248);text-decoration:none;margin:0 10px;}
+footer a:hover{color:#f0c54e;}
+#noResultsMsg {
+  text-align: center;
+  padding: 30px;
+  color: #002c5f;
+  display: none;
+}
+@media(max-width:768px){
+  nav.right-links{display:none;flex-direction:column;background:#002c5f;position:absolute;top:50px;right:0;width:200px;padding:10px;border-radius:5px;}
+  nav.right-links.active{display:flex;}
+  .menu-toggle{display:block;color:white;}
+  
+}
+
+.product-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: 1fr; /* default 1 column */
+}
+
+/* Default: 3 columns even on small phones */
+.product-grid {
+  display: grid;
+  gap: 15px;
+  padding: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Tablets ≥ 768px → 3 columns (optional, already covered) */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktops ≥ 1024px → 4 columns */
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* Slider */
+.slider{width:100%;max-width:1200px;height:400px;overflow:hidden;border-radius:10px;margin:20px auto;position:relative;}
+.slider-track{display:flex;animation:slide 15s linear infinite;}
+.slider-track img{width:1200px;height:400px;object-fit:cover;flex-shrink:0;border-radius:10px;}
+@keyframes slide{0%{transform:translateX(0);}100%{transform:translateX(-3600px);}}
+@media(max-width:1200px){.slider-track img{width:100%;height:auto;}}
+
+</style>
+</head>
+<body>
+  
+
+<!-- Header -->
+<header>
+  <div class="left-menu">
+    <h2><i class="fa-solid fa-shop"></i>ATOZ Malimali & Electronics</h2>
+    <nav class="left-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="electronics.html"><i class="fa-solid fa-plug-circle-bolt"></i> Electronics</a>
+      <a href="kitchen.html"><i class="fa-solid fa-kitchen-set"></i> Home & Kitchen</a>
+    </nav>
+  </div>
+  <div class="right-menu">
+    <nav class="right-links" id="rightLinks">
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a>
+      <a href="contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a>
+    </nav>
+    <input type="text" class="search-box" placeholder="Search...">
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+  </div>
+</header>
+
+<!-- Slider -->
+<div class="slider">
+  <div class="slider-track">
+    <img src="image/nunix1.jpg" alt="Slide 1">
+    <img src="image/Tcl 43v6b 43 -inch 4k uhd google smart led tv – black (1).jpg" alt="Slide 2">
+    <img src="image/uten13.jpg" alt="Slide 3">
+    <img src="image copy/blenderslide.jpg" alt="Slide 5">
+    <img src="image/WhatsApp Image 2025-11-29 at 15.47.37_c03110cf.jpg" alt="Slide 4">
+     <img src="image copy/blenderslide.jpg" alt="Slide 5">
+     <img src="image copy/blenderslide.jpg" alt="Slide 6">
+  </div>
+</div>
+
+<h2 style="text-align:center;">Featured Products</h2>
+<div class="product-grid" id="productGrid"></div>
+
+<div id="noResultsMsg">
+  <h3>Product not found</h3>
+  <p>We don’t carry that item yet — but we’d love to know what you’re looking for!</p>
+  <a href="contact.html" style="color:#25D366; font-weight:bold;">Contact us via WhatsApp</a>
+</div>
+
+<!-- Social media handles -->
+<div class="social-handles">
+  <a href="https://www.facebook.com/share/17tTnvr3Tz/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/malimalishop2024/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@atozmalimali" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+</div>
+
+<script>
+// Mobile menu toggle
+function toggleMenu(){
+  document.getElementById("rightLinks").classList.toggle("active");
+}
+
+// ✅ FIXED WhatsApp function (no extra spaces)
+function orderWhatsApp(product, price) {
+  const phone = "254799547792";
+  const message = `Hello! I want to order:%0A• ${product} - KES ${price}`;
+  const cleanPhone = phone.replace(/\D/g, '');
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const url = isMobile
+    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`
+    : `https://web.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+// ✅ 28 Featured Products (20 original + 8 new)
+const products = [
+  // Original 20
+  {name:"LED TV",price:25000,img:"image copy/vitronmain.png",img2:"image copy/vitron front.png",img3:"image copy/vitronback.png",desc:"43-inch 4K UHD Smart LED TV with Google TV, HDR10, and built-in streaming apps. Perfect for home entertainment."},
+  {name:"Amtec speaker",price:15000,img:"image copy/amtec main.png",img2:"image copy/amtecfront.png",img3:"image copy/amtecback.png",desc:"Amtec AM-02 2.1CH Multimedia Speaker BT/USB/SD/FM (1YR WRTY)"},
+  {name:"15° Tilting Wall Mount",price:1000,img:"image copy/tv stand15main.jpg",img2:"image copy/amtecfront.png",img3:"image copy/amtecback.png",desc:"Effortless 15° tilt for the perfect viewing angle"},
+  {name:"Fixed Wall Mount",price:700,img:"image copy/tv standmain.jpg",img2:"image copy/amtecfront.png",img3:"image copy/amtecback.png",desc:"Fixed, stable positioning for a secure and professional display"},
+  {name:"Blender",price:3500,img:"image copy/blendermain.png",img2:"image copy/blenderfront.png",img3:"image copy/blenderback.png",desc:"TropicWhirl Blender 2L 2 Cups (Model: 1589), 650W - Red/Black"},
+  {name:"Charger",price:450,img:"image copy/chargermain.png",img2:"image copy/chargerfront.png",img3:"image copy/chargerback.png",desc:"Samsung 45W USB C Plug For Samsung, SuperFast Charger Plug And Cable 1M, USB C Super Fast Charger For Galaxy S23 Ultra/S22+/S22 Ultra/S21/S20/A13/A14/A54 5G, UK Type C Charger Plug - White."},
+  {name:"Manual tap Dispencer",price:550,img:"image copy/tapmain.png",img2:"image copy/tapfront.png",img3:"image copy/tapback.png",desc:"Rashnik Manual Water Dispenser Pump"},
+  {name:"Wireless Earbuds",price:1500,img:"image copy/earburdmain.png",img2:"image copy/earburdfront.png",img3:"image copy/earburdback.png",desc:"True wireless Bluetooth 5.3 earbuds with noise cancellation, touch control, and 20-hour battery life."},
+  {name:"Smart Watch",price:2500,img:"image copy/smartwartchmain.png",img2:"image copy/smartwatchfront.png",img3:"image copy/smartwatchback.png",desc:"Fitness smartwatch with heart rate monitor, sleep tracking, and 1.7\" color display. IP68 waterproof."},
+  {name:"Electric Kettle",price:1800,img:"image copy/ketalmain.png",img2:"image copy/ketalfront.png",img3:"image copy/ketalback.png",desc:"1.7L stainless steel electric kettle with auto shut-off, boil-dry protection, and rapid boil technology."},
+  {name:"Hair Dryer",price:1700,img:"image copy/blowdriermain.png",img2:"image copy/blowdrierfront.png",img3:"image copy/blowdrierback.png",desc:"2000W professional hair dryer with 3 heat/speed settings, cool shot button, and concentrator nozzle."},
+  {name:"Rice Cooker",price:4500,img:"image copy/ricecookermain.png",img2:"image copy/ricecookerfront.png",img3:"image copy/ricecokkerback.png",desc:"1.8L non-stick inner pot rice cooker with steam tray, keep-warm function, and auto shut-off."},
+  {name:"Power Bank 20000mAh",price:3500,img:"image copy/powerbankmain.png",img2:"image copy/powerbankfront.png",img3:"image copy/powerbankback.png",desc:"20000mAh fast-charging power bank with USB-C PD, dual output, and LED charge indicator."},
+  {name:"wordrobe",price:3500,img:"image copy/wordrob.png",img2:"image copy/wordrobefront.jpg",img3:"image copy/wordrobeback.jpg",desc:"Adjustable steel wardrobe with 3 shelves, easy assembly, and durable frame."},
+  {name:"Mini Fridge",price:12000,img:"image copy/minifridgemain.png",img2:"image copy/minifrigefront.png",img3:"image copy/minifridgeback.png",desc:"VOLSMART 108L Fridge - Mini Double Door Refrigerator, Direct Cool+FREE FRIDGE GUARD"},
+  {name:"Steam Iron",price:1700,img:"image copy/steamironmain.png",img2:"image copy/steamironfront.png",img3:"image copy/steamironfront.png",desc:"2000W steam iron with anti-drip system, vertical steam, and ceramic soleplate for smooth gliding."},
+  {name:"Laundry Machine",price:45000,img:"image copy/laundrymachinemain.png",img2:"image copy/laundrymachinefront.png",img3:"image copy/laundrymachineback.png",desc:"Hisense 12KG FRONT LOAD WASH AND DRY MACHINE, EXCELLENCE IN LAUNDRY CARE, INTELLIGENT WASH SYSTEM, ENERGY EFFICIENT, INVERTER MOTOR"},
+  {name:"Microwave",price:12000,img:"image copy/wavemain.png",img2:"image copy/wavefront.png",img3:"image copy/waveback.png",desc:"20L Solo Microwave Oven with 5 power levels, defrost function, and child lock."},
+  {name:"Router",price:2000,img:"image copy/router.jpg",img2:"image copy/scale2.png",img3:"image copy/scale3.png",desc:"High-speed Wi-Fi router with dual-band support, multiple antennas, and easy setup for home or office."},
+  {name:"Nunix oven",price:20500,img:"image copy/Ovennmain.jpg",img2:"image copy/heater2.png",img3:"image copy/heater3.png",desc:"Compact electric oven with adjustable temperature control, timer, and multiple cooking functions."},
+  {name:" 2tap water dispenser",price:3500,img:"image copy/nunixdispensermain.jpg",img2:"image copy/stand2.png",img3:"image copy/stand3.png",desc:"Adjustable aluminum phone/tablet holder for desk, compatible with all smartphones and small tablets."},
+  {name:"Von fridge",price:1200,img:"image copy/vonmain.jpg",img2:"image copy/mouse2.png",img3:"image copy/mouse3.png",desc:"Compact mini fridge with 4L capacity, ideal for small spaces, dorms, or offices."},
+
+  // 🔥 8 NEW PRODUCTS (21–28)
+  {name:"Apple TV Decoder",price:1800,img:"image/Gift This, Not That_ New Apple TV Vs_ Amazon Fire TV.jpg",img2:"image copy/lamp2.png",img3:"image copy/lamp3.png",desc:"Apple TV streaming decoder with smooth performance, HD support and smart connectivity for all your entertainment."},
+
+{name:"Beats Solo 4 - Wireless Bluetooth On-Ear Headphones",price:900,img:"image/Beats Solo 4 - Wireless Bluetooth On-Ear Headphones, Apple & Android Compatible, Up to 50 Hours of Battery Life - Slate Blue.jpg",img2:"image copy/fan2.png",img3:"image copy/fan3.png",desc:"Portable desk fan with strong airflow, quiet operation and USB power for home or office use."},
+
+{name:"Fridge",price:35000,img:"image copy/shopfridge35000.jpg",img2:"image copy/knives2.jpg",img3:"image copy/knives3.jpg",desc:"Compact chest freezer ideal for home storage, energy-efficient with fast-freeze technology."},
+
+{name:"Chest Freezer",price:30000,img:"image copy/chestfreezermain.png",img2:"image copy/airfryer2.jpg",img3:"image copy/airfryer3.jpg",desc:"Large-capacity chest freezer designed for reliable cooling, low power use and long-term food storage."},
+
+{name:" Wireless Headphone",price:1800,img:"image copy/headphone1800.jpg",img2:"image copy/doorbell2.jpg",img3:"image copy/doorbell3.jpg",desc:"High-quality Oraimo wireless headphones with deep bass, long battery life and Bluetooth connectivity."},
+{name:"Oraimo Wireless Headphone",price:1700,img:"image copy/oraimobluetoothmain.jpg",img2:"image copy/doorbell2.jpg",img3:"image copy/doorbell3.jpg",desc:"High-quality Oraimo wireless headphones with deep bass, long battery life and Bluetooth connectivity."},
+
+{name:"Oraimo Wireless Headphone",price:1500,img:"image copy/oraimondogo.jpg",img2:"image copy/chair2.jpg",img3:"image copy/chair3.jpg",desc:"Premium Oraimo wireless headphones offering comfort, clear sound and long-lasting performance."},
+
+{name:"Neckband Wireless Bluetooth",price:900,img:"image copy/neckbandmain.jpg",img2:"image copy/purifier2.jpg",img3:"image copy/purifier3.jpg",desc:"Wireless Bluetooth neckband with clear audio, strong battery life and comfortable flexible design."},
+
+{name:"Bicycle Size 27",price:25000,img:"image copy/MTB27.jpg",img2:"image copy/wok2.jpg",img3:"image copy/wok3.jpg",desc:"Durable size 27 bicycle suitable for adults, strong frame and smooth riding experience."},
+
+{name:"Bicycle Size 26",price:15000,img:"image copy/mtb26a.jpg",img2:"image copy/mtb26a.jpg",img3:"image copy/wok3.jpg",desc:"Reliable size 26 bicycle ideal for daily use with comfortable handling and sturdy tires."},
+
+{name:"Lady Bird BIcycle size 20",price:7000,img:"image copy/ladybird20.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+{name:"Lady Bird BIcycle size 16",price:6000,img:"image copy/lady16.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+{name:"Lady Bird BIcycle size 12",price:5800,img:"image copy/lady12.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+
+{name:"Lady Bird BIcycle size 20",price:7500,img:"image copy/SKYFLYBMX20.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+{name:"Lady Bird BIcycle size 20",price:7000,img:"image copy/SKYFLYBMX16.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+{name:"Lady Bird BIcycle size 20",price:6000,img:"image copy/SKYFLY BMX12.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+{name:"Lady Bird BIcycle size 20",price:7000,img:"image copy/ladybird20.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+{name:"Lady Bird BIcycle size 20",price:7000,img:"image copy/ladybird20.jpg",img2:"image copy/mtb20boy.jpg",img3:"image copy/wok3.jpg",desc:"Lightweight size 20 bicycle perfect for teens, stable design and easy to ride."},
+
+{name:"Bicycle Size 16",price:2800,img:"image copy/mtb16girl.jpg",img2:"image copy/wok2.jpg",img3:"image copy/wok3.jpg",desc:"Compact size 16 bicycle for kids, safe, durable and beginner-friendly."},
+
+{name:"Electric Bicycle",price:80000,img:"image copy/mtb 12.jpg",img2:"image copy/wok2.jpg",img3:"image copy/wok3.jpg",desc:" Electric bicycle designed for young people with a stable and secure frame."},
+
+{name:"Scooter",price:1500,img:"image copy/scooter.jpg",img2:"image copy/scooter.jpg",img3:"image/extender3.jpg",desc:"Lightweight scooter for smooth riding, foldable design and durable wheels."},
+
+{name:"Fan",price:3500,img:"image copy/fan2.jpg",img2:"image copy/fan2.jpg",img3:"image/extender3.jpg",desc:"Powerful home fan offering strong airflow and quiet performance for cooling any room."},
+
+{name:"Baby Walker",price:3500,img:"image copy/babywalker3500.jpg",img2:"image copy/babywalker.jpg",img3:"image/extender3.jpg",desc:"Comfortable baby walker with stable wheels, supportive seat and safe mobility for toddlers."},
+{name:"Baby Walker",price:4000,img:"image copy/babywalker.jpg",img2:"image copy/babywalker.jpg",img3:"image/extender3.jpg",desc:"Comfortable baby walker with stable wheels, supportive seat and safe mobility for toddlers."},
+
+{name:"PS5",price:75000,img:"image copy/ps5main.jpg",img2:"image copy/ps5main.jpg",img3:"image/extender3.jpg",desc:"PlayStation 5 gaming console delivering ultra-fast performance and immersive gameplay."},
+{name:"Vacuum Cleaner",price:13000,img:"image copy/vacum cleaner13000.jpg",img2:"image copy/ps5main.jpg",img3:"image/extender3.jpg",desc:"A powerful and lightweight vacuum cleaner designed to remove dust, dirt, and pet hair with ease. Features efficient filtration, smooth maneuverability, and quick, mess-free emptying for everyday cleaning."},
+
+];
+
+// Generate product cards
+const productGrid = document.getElementById("productGrid");
+products.forEach(product => {
+  const card = document.createElement("div");
+  card.classList.add("product-card");
+  card.setAttribute("data-name", product.name.toLowerCase());
+  card.setAttribute("data-desc", product.desc.toLowerCase());
+
+  const safeName = product.name.replace(/'/g, "\\'");
+  card.innerHTML = `
+    <img src="${product.img}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>KES ${product.price.toLocaleString()}</p>
+    <button class="whatsapp-btn-card" onclick="orderWhatsApp('${safeName}', ${product.price})">Order via WhatsApp</button>
+  `;
+
+  card.addEventListener("click", (e) => {
+    if (e.target.tagName.toLowerCase() === "button") return;
+    const params = new URLSearchParams({
+      name: product.name,
+      price: `KES ${product.price}`,
+      img: product.img,
+      img2: product.img2 || product.img,
+      img3: product.img3 || product.img,
+      desc: product.desc
+    }).toString();
+    window.location.href = `product-details.html?${params}`;
+  });
+
+  productGrid.appendChild(card);
+});
+
+// ✅ LIVE SEARCH
+document.getElementById("searchBox").addEventListener("input", function(e) {
+  const term = e.target.value.toLowerCase().trim();
+  const cards = document.querySelectorAll(".product-card");
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const name = card.getAttribute("data-name") || "";
+    const desc = card.getAttribute("data-desc") || "";
+    if (term && (name.includes(term) || desc.includes(term))) {
+      card.style.display = "block";
+      visibleCount++;
+    } else {
+      card.style.display = term ? "none" : "block";
+    }
+  });
+
+  const noResults = document.getElementById("noResultsMsg");
+  if (term && visibleCount === 0) {
+    noResults.style.display = "block";
+  } else {
+    noResults.style.display = "none";
+  }
+});
+</script>
+
+<footer>
+  <p>&copy; 2025 ATOZ Malimali & Electronics. All Rights Reserved.</p>
+  <p>
+    <a href="https://www.facebook.com/share/17tTnvr3Tz/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/malimalishop2024/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@atozmalimali" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+  </p>
+</footer>
+
+</body>
+</html>

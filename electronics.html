@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electronics - ATOZ Malimali & Electronics</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#feffff;}
+header{background:#c1e9f3;color:rgb(71, 96, 238);padding:10px 15px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+header h2{display:flex;align-items:center;gap:8px;font-size:1.2em;}
+nav{display:flex;gap:15px;align-items:center;}
+nav a{color:rgb(7, 7, 7);text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:6px;font-size:15px;}
+nav a:hover{color:#e75ff3;}
+.search-box{padding:6px 10px;border-radius:5px;border:none;min-width:200px;}
+.menu-toggle{display:none;font-size:1.5em;cursor:pointer;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px;}
+.product-card{background:white;border-radius:10px;padding:15px;box-shadow:0px 3px 10px rgba(0,0,0,0.1);transition:0.3s;cursor:pointer;}
+.product-card:hover{transform:scale(1.05);}
+.product-card img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px;}
+.whatsapp-btn-card{background:#25D366;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;font-weight:bold;width:100%;transition:0.3s;}
+.whatsapp-btn-card:hover{background:#128C7E;transform:scale(1.05);}
+.social-handles{position:fixed;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:15px;z-index:1000;}
+.social-handles .social-icon{background:#07ecec;color:white;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;text-decoration:none;transition:0.3s;}
+.social-handles .social-icon:hover{background:#e57ce9;transform:scale(1.2);}
+footer{background:#323837;color:rgb(15, 15, 15);padding:30px 20px;text-align:center;}
+footer a{color:rgb(1, 188, 245);text-decoration:none;margin:0 10px;}
+footer a:hover{color:#f89b0f;}
+#noResultsMsg {
+  text-align: center;
+  padding: 30px;
+  color: #002c5f;
+  display: none;
+}
+@media(max-width:768px){
+  nav.right-links{display:none;flex-direction:column;background:#002c5f;position:absolute;top:50px;right:0;width:200px;padding:10px;border-radius:5px;}
+  nav.right-links.active{display:flex;}
+  .menu-toggle{display:block;color:white;}
+}
+/* Default: 3 columns even on small phones */
+.product-grid {
+  display: grid;
+  gap: 15px;
+  padding: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Tablets ≥ 768px → 3 columns (optional, already covered) */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktops ≥ 1024px → 4 columns */
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="left-menu">
+    <h2><i class="fa-solid fa-shop"></i>ATOZ Malimali & Electronics</h2>
+    <nav class="left-links">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="electronics.html"><i class="fa-solid fa-plug-circle-bolt"></i> Electronics</a>
+      <a href="kitchen.html"><i class="fa-solid fa-kitchen-set"></i> Home & Kitchen</a>
+    </nav>
+  </div>
+  <div class="right-menu">
+    <nav class="right-links" id="rightLinks">
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a>
+      <a href="contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a>
+    </nav>
+    <input type="text" id="searchBox" class="search-box" placeholder="Search products...">
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+  </div>
+</header>
+
+<h1 style="text-align:center;margin-top:20px;">Electronics Products</h1>
+<div class="product-grid" id="productGrid"></div>
+
+<div id="noResultsMsg">
+  <h3>Product not found</h3>
+  <p>We don’t carry that item yet — but we’d love to know what you’re looking for!</p>
+  <a href="contact.html" style="color:#25D366; font-weight:bold;">Contact us via WhatsApp</a>
+</div>
+
+<!-- Floating Social Handles -->
+<div class="social-handles">
+  <a href="https://www.facebook.com/share/17tTnvr3Tz/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.instagram.com/malimalishop2024/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@atozmalimali" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+</div>
+
+<footer>
+  <p>&copy; 2025 ATOZ Malimali & Electronics. All Rights Reserved.</p>
+  <p>
+    <a href="https://www.facebook.com/share/17tTnvr3Tz/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/malimalishop2024/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@atozmalimali" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+  </p>
+</footer>
+
+<script>
+// Mobile menu toggle
+function toggleMenu(){
+  document.getElementById("rightLinks").classList.toggle("active");
+}
+
+// ✅ FIXED WhatsApp function (no extra spaces)
+function orderWhatsApp(product, price) {
+  const phone = "254799547792";
+  const message = `Hello! I want to order:%0A• ${product} - KES ${price}`;
+  const cleanPhone = phone.replace(/\D/g, '');
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const url = isMobile
+    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`
+    : `https://web.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+// ✅ 28 Electronics Products
+const electronicsProducts = [
+ {name:"TCL 55-inch smart TV", price:55000, img:"image copy/tclmain.png", img2:"image/tv2.jpg", img3:"image/tv3.jpg", desc:"Crisp 55-inch LED TV with 4K resolution, smart features, and multiple HDMI ports."},
+  {name:"TCL 43-inch smart tv", price:35000, img:"image copy/TCLNEW43MAIN.png", img2:"image/pc2.jpg", img3:"image/pc3.jpg", desc:"Compact 43-inch 4K Smart LED TV with HDR support and built-in streaming apps."},
+  {name:"Vitron 43-inch smart tv", price:19000, img:"image copy/VITRONNEW43MAIN.png", img2:"image/speaker2.jpg", img3:"image/speaker3.jpg", desc:"43-inch HD TV with clear display, USB/HDMI connectivity, perfect for everyday viewing."},
+  {name:"Vitron 32-inch smart tv", price:13000, img:"image copy/vitronmain.png", img2:"image/lg2.jpg", img3:"image/lg3.jpg", desc:"32-inch HD TV, compact design, ideal for small rooms or kitchens."},
+  {name:"Ailyons 5.1 home theatre", price:13000, img:"image copy/ailyonswoofeermain.jpg", img2:"image/phone2.jpg", img3:"image/phone3.jpg", desc:"Immersive 5.1 channel home theatre system with deep bass and crystal-clear sound."},
+  {name:"Ailyons 2.1 system", price:6000, img:"image copy/AIYLONSWOOFERMAIN.png", img2:"image/earbuds2.jpg", img3:"image/earbuds3.jpg", desc:"2.1 channel sound system with subwoofer for rich, high-quality audio."},
+  {name:"3.1 mini h/theatre system", price:5000, img:"image copy/woooofermain.jpg", img2:"image/watch2.jpg", img3:"image/watch3.jpg", desc:"Compact 3.1 mini home theatre system with Bluetooth and surround sound."},
+  {name:"Ailyons 2.1 ch sound bar", price:6000, img:"image copy/woofermain.jpg", img2:"image/power2.jpg", img3:"image/power3.jpg", desc:"2.1 channel sound bar with wireless subwoofer for cinema-like experience."},
+  {name:"5.1 deluxe home theatre system", price:14000, img:"image copy/woofer51main.jpg", img2:"image/lamp2.jpg", img3:"image/lamp3.jpg", desc:"Full 5.1 deluxe home theatre with powerful speakers and rich bass performance."},
+  {name:"Ailyons 2.1 subwoofer", price:3500, img:"image copy/woofer21maain.jpg", img2:"image/fan2.jpg", img3:"image/fan3.jpg", desc:"Standalone 2.1 subwoofer designed to enhance the bass of any audio system."},
+  {name:"3.1 mini home theatre", price:5000, img:"image copy/ssystem main.jpg", img2:"image/scale2.jpg", img3:"image/scale3.jpg", desc:"Compact 3.1 mini home theatre with Bluetooth and clear stereo sound."},
+  {name:"Amtec 2.1 speaker", price:6500, img:"image copy/amtec main.png", img2:"image/stand2.jpg", img3:"image/stand3.jpg", desc:"2.1 channel Amtec speaker system with subwoofer and rich audio output."},
+  {name:"Ailyons bottom load water dispenser", price:9500, img:"image copy/ailyonsnewmodeldispensermain.jpg", img2:"image/mouse2.jpg", img3:"image/mouse3.jpg", desc:"Convenient bottom load water dispenser with hot and cold water options."},
+  {name:"Nunix water dispenser", price:10000, img:"image copy/nunixhotandcoldmain.jpg", img2:"image/keyboard2.jpg", img3:"image/keyboard3.jpg", desc:"Reliable water dispenser with sleek design, hot & cold functionality."},
+  {name:"1tap water dispenser", price:1500, img:"image copy/1tap1500.jpg", img2:"image/cam2.jpg", img3:"image/cam3.jpg", desc:"ONE-tap water dispenser providing easy access to cold and room temperature water."},
+  {name:"3tap water dispenser", price:5000, img:"image copy/nunixdispenfront.jpg", img2:"image/cam2.jpg", img3:"image/cam3.jpg", desc:"Three-tap water dispenser providing easy access to cold and room temperature water."},
+  {name:"3tap water dispenser", price:5000, img:"image copy/3tap 5000.jpg", img2:"image/cam2.jpg", img3:"image/cam3.jpg", desc:"Three-tap water dispenser providing easy access to cold, hot and room temperature water."},
+  {name:"2tap water dispenser", price:3500, img:"image copy/nunixdispensermain.jpg", img2:"image/cam2.jpg", img3:"image/cam3.jpg", desc:"Two-tap water dispenser providing easy access to cold and room temperature water."},
+  {name:"3tap water dispenser", price:5500, img:"image copy/ipcone3tapmain.jpg", img2:"image/headphones2.jpg", img3:"image/headphones3.jpg", desc:"Three-tap water dispenser suitable for offices and homes, with separate hot and cold taps."},
+  {name:"Ipcone table top water dispenser", price:3000, img:"image copy/ipconedispensermain.jpg", img2:"image/gmouse2.jpg", img3:"image/gmouse3.jpg", desc:"Compact tabletop water dispenser, perfect for desks and small spaces."},
+  {name:"Ailyons AFK-112 water dispenser", price:7000, img:"image copy/aiylyon3tapmain.jpg", img2:"image/lstand2.jpg", img3:"image/lstand3.jpg", desc:"Advanced AFK-112 water dispenser with hot, cold, and room temperature options."},
+  {name:"Water bottom dispenser", price:9500, img:"image copy/ailyonsnewmodeldispensermain.jpg", img2:"image/webcam2.jpg", img3:"image/webcam3.jpg", desc:"Bottom load water dispenser designed for ease of use and modern kitchens."},
+  {name:"Nunix 3 tap water dispenser", price:10500, img:"image copy/nunix3tapmain.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"Durable 3-tap water dispenser with efficient cooling and heating system."},
+  {name:"Antenna", price:500, img:"image copy/antennamain.png", img2:"image copy/antennaback.png", img3:"image copy/antennafront.png", desc:"High-gain TV antenna for clear signal reception and multiple channels."},
+  {name:"DSTV", price:5500, img:"image copy/dstvdishmain.jpg", img2:"image copy/dstvdishmain.jpg", img3:"image/mech3.jpg", desc:"Digital satellite TV subscription service with wide channel selection."},
+  {name:"GOTV decoder", price:2000, img:"image copy/dstvdecodermain.jpg", img2:"image/ssd2.jpg", img3:"image/ssd3.jpg", desc:"GOTV decoder for affordable digital TV viewing with local and international channels."},
+  {name:"Silver Crest heavy duty commercial blender", price:4000, img:"image copy/blendermaain.jpg", img2:"image/bulb2.jpg", img3:"image/bulb3.jpg", desc:"Powerful commercial blender for smoothies, juices, and heavy-duty kitchen use."},
+  {name:"Silver Crest heavy duty commercial blender", price:3800, img:"image copy/blender3800.jpg", img2:"image/bulb2.jpg", img3:"image/bulb3.jpg", desc:"Powerful commercial blender for smoothies, juices, and heavy-duty kitchen use."},
+  {name:"Silver Crest heavy duty commercial blender", price:3500, img:"image copy/blenderfront.png", img2:"image/bulb2.jpg", img3:"image/bulb3.jpg", desc:"Powerful commercial blender for smoothies, juices, and heavy-duty kitchen use."},
+  {name:"Ailyons blender black", price:2400, img:"image copy/ipcodeblendermain.png", img2:"image copy/ailyonsblendermain.png", img3:"image/wcharge3.jpg", desc:"Compact black blender ideal for daily kitchen tasks and smoothies."},
+  {name:"Ailyons blender white", price:2400, img:"image copy/ailyonsblendermain.png", img2:"image copy/ipcodeblendermain.png", img3:"image/proj3.jpg", desc:"Sleek white blender with multiple speed settings for versatile blending."},
+  {name:"Ailyons tyb201 blender", price:2400, img:"image copy/blenderipconemain.jpg", img2:"image/extender2.jpg", img3:"image copy/ipcodeblendermain.png", desc:"TYB201 blender model with durable blades and high-speed performance."},
+  {name:"Ailyons tyb201 blender black", price:2400, img:"image copy/ipopblendermain.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"Black variant of TYB201 blender, perfect for modern kitchen aesthetics."},
+  {name:"Shower head ", price:2200, img:"image copy/showerheadmain.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"Affordable shower head with reliable water flow for everyday use."},
+  // 🔹 3 NEW PRODUCTS
+  
+{name:"Shower head (round head)", price:2000, img:"image copy/showermain.jpg", img2:"image copy/laundyplasticmain.jpg", img3:"image copy/drone3.jpg", desc:"Premium round-head shower with stylish design and excellent spray coverage."},
+  {name:"Extension", price:500, img:"image copy/extensionstmain.jpg", img2:"image copy/doorbell2.jpg", img3:"image copy/doorbell3.jpg", desc:"Durable power extension cord with multiple sockets and surge protection."},
+   {name:"Solar panel", price:4000, img:"image copy/solar pnael.jpg", img2:"image copy/chair2.jpg", img3:"image copy/chair3.jpg", desc:"High-efficiency solar panel for residential use with long-lasting performance."},
+   {name:"Radio(CASTON) ", price:1000, img:"image copy/castonredio.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"faster charger"},
+   {name:"Car Charger ", price:300, img:"image copy/carchager.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"clear sound quality radio with battery and electricity connectivity."},
+   {name:"lamp", price:1500, img:"image copy/lamp.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"good for hair cut."},
+      {name:"Shaver ", price:1600, img:"image copy/shaver.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"good for hair cut."},
+         {name:"D-light ", price:500, img:"image copy/delight2.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"good for hair cut."},
+            {name:"HeaterFan ", price:2500, img:"image copy/heatfanma.jpg", img2:"image/extender2.jpg", img3:"image/extender3.jpg", desc:"good for hair cut."}
+];
+
+// Generate product cards
+const productGrid = document.getElementById("productGrid");
+electronicsProducts.forEach(product => {
+  const card = document.createElement("div");
+  card.classList.add("product-card");
+  card.setAttribute("data-name", product.name.toLowerCase());
+  card.setAttribute("data-desc", product.desc.toLowerCase());
+
+  const safeName = product.name.replace(/'/g, "\\'");
+  card.innerHTML = `
+    <img src="${product.img}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>KES ${product.price.toLocaleString()}</p>
+    <button class="whatsapp-btn-card" onclick="orderWhatsApp('${safeName}', ${product.price})">Order via WhatsApp</button>
+  `;
+
+  card.addEventListener("click", (e) => {
+    if (e.target.tagName.toLowerCase() === "button") return;
+    const params = new URLSearchParams({
+      name: product.name,
+      price: `KES ${product.price}`,
+      img: product.img,
+      img2: product.img2 || product.img,
+      img3: product.img3 || product.img,
+      desc: product.desc
+    }).toString();
+    window.location.href = `product-details.html?${params}`;
+  });
+
+  productGrid.appendChild(card);
+});
+
+// ✅ LIVE SEARCH
+document.getElementById("searchBox").addEventListener("input", function(e) {
+  const term = e.target.value.toLowerCase().trim();
+  const cards = document.querySelectorAll(".product-card");
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const name = card.getAttribute("data-name") || "";
+    const desc = card.getAttribute("data-desc") || "";
+    if (term && (name.includes(term) || desc.includes(term))) {
+      card.style.display = "block";
+      visibleCount++;
+    } else {
+      card.style.display = term ? "none" : "block";
+    }
+  });
+
+  const noResults = document.getElementById("noResultsMsg");
+  if (term && visibleCount === 0) {
+    noResults.style.display = "block";
+  } else {
+    noResults.style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>

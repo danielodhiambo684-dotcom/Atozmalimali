@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Cart</title>
+<style>
+:root { --main-color: #2f8f2f; }
+
+body { font-family: Arial; padding: 20px; }
+
+.cart-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+button {
+  background: var(--main-color);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.remove {
+  background: red;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h2>Your Cart</h2>
+<div id="cart"></div>
+
+<button onclick="checkout()">Checkout via WhatsApp</button>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function loadCart() {
+  let output = "";
+  let total = 0;
+
+  cart.forEach((item, i) => {
+    output += `
+      <div class='cart-item'>
+        <strong>${item.title}</strong><br>
+        Price: ${item.price}<br>
+        <button class='remove' onclick='removeItem(${i})'>Remove</button>
+      </div>
+    `;
+    total += item.price;
+  });
+
+  output += `<h3>Total: KSh ${total}</h3>`;
+  document.getElementById("cart").innerHTML = output;
+}
+
+function removeItem(i) {
+  cart.splice(i, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+function checkout() {
+  let message = "Hello, I want to order:\n\n";
+  let total = 0;
+
+  cart.forEach(item => {
+    message += `• ${item.title} - KSh ${item.price}\n`;
+    total += item.price;
+  });
+
+  message += `\nTotal: KSh ${total}`;
+
+  let phone = " 0799 547792"; // ← PUT YOUR WHATSAPP NUMBER
+  window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message));
+}
+
+loadCart();
+</script>
+
+</body>
+</html>
